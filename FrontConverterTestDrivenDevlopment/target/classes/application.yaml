@@ -1,0 +1,8 @@
+server:
+  port:
+    8089
+#profile.property.value = *1000
+
+
+#profile.property.value = this the the application-test.properties file
+#spring.profiles =test
