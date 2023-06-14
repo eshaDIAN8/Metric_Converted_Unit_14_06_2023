@@ -1,6 +1,5 @@
 package com.example.metricconverter.dao;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -37,10 +37,9 @@ public class MetricConverterTddController {
 	private MetricConverterTddEnum unit;
 
 	@Autowired
-	MetricConverterTddInputValidation inputValidation ;
+	MetricConverterTddInputValidation inputValidation  ;
 
-	String fromUnit;
-	String toUnit;
+	
 	String finalConvertedResult;
 
 	@GetMapping("/converter")
@@ -49,9 +48,9 @@ public class MetricConverterTddController {
 			throws BothInputRequestParamEqualException {
 		Boolean validatedResult = false ;
 		
-         
+       
 		validatedResult =  inputValidation.validateInput(fromEnumUnit, toEnumUnit, value);
-      
+         
 
 		double unitToBeConvertedResult = 0;
    
@@ -66,10 +65,11 @@ public class MetricConverterTddController {
 			finalConvertedResult = String.valueOf(unitToBeConvertedResult);
 			logger.info(finalConvertedResult);
 		}
-		
-			//return  new ResponseEntity(new BothInputRequestParamEqualException("validation failed"),HttpStatus.BAD_REQUEST);
+		else {
+			
 			logger.info("input parameter validation issue");
-					
+			return new ResponseEntity<String>("invalid input",HttpStatus.BAD_REQUEST);
+		}		
 
 		return new ResponseEntity<>(finalConvertedResult,HttpStatus.OK);
 

@@ -8,7 +8,9 @@ public enum MetricConverterTddEnum {
 	FOOT,
 	MILE,
 	MM,
-	CM ;
+	CM,
+	NULL;
+	
 		
 
 }

@@ -14,6 +14,7 @@ import com.example.metricconverter.exception.BothInputRequestParamEqualException
 
 public class APITest {
 
+	
 	@Test
 	@DisplayName("testing service chaining call")
 	public void testGivenEnumFromUnitAndToUnit_whenBothInputsAreDifferent_thenWillGetCalculatedResult() {
@@ -29,7 +30,6 @@ public class APITest {
 	}
 
 	@Test
-	//(expected = BothInputRequestParamEqualException.class)
 	public void testGivenEnumFromUnitAndToUnit_whenBothInputsAreSame_thenWillGetCalculatedResult() throws BothInputRequestParamEqualException {
 
 		RestAssured.baseURI = "http://localhost:8089";

@@ -1,7 +1,5 @@
 package com.example.metricconverter.inputValidation;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.constraints.NotEmpty;
@@ -12,46 +10,33 @@ import org.springframework.stereotype.Component;
 
 import com.example.metricconverter.constant.MetricConverterTddEnum;
 import com.example.metricconverter.exception.BothInputRequestParamEqualException;
-import com.example.metricconverter.exception.InputMismatchException;
 
 @Component
 public class MetricConverterTddInputValidation {
-	
-	public Boolean validateInput( MetricConverterTddEnum fromEnumUnit, MetricConverterTddEnum toEnumUnit,
+
+	public Boolean validateInput(MetricConverterTddEnum fromEnumUnit, MetricConverterTddEnum toEnumUnit,
 			@NotNull @NotEmpty String value) throws BothInputRequestParamEqualException {
-	
-		
-		
-		Optional<String> optionalvalue = Optional.ofNullable(value);
-	
+
+
 		String fromUnit = null;
 		String toUnit = null;
 		Boolean b = false;
-			
-	
-			fromUnit = fromEnumUnit.name();
-			System.out.println("fromUnit::" + fromUnit);
-			toUnit = toEnumUnit.name();
-			System.out.println("toUnit::" + fromUnit);
-			String validatedValue = optionalvalue.get();
-			 b = true;
-			
-		
-		
-			 
-			if (fromUnit.equalsIgnoreCase(toUnit) || StringUtils.isEmpty(fromUnit) || StringUtils.isEmpty(toUnit)) {
-				b= false;
-				
-				 throw new BothInputRequestParamEqualException("both input shd not be same");
-				
-		      }else {
-				System.out.println("inputs are different ");
-				}
-			
-		
-		
-	
-		
-		return  b; 
-  }
+
+		fromUnit = fromEnumUnit.name();
+		System.out.println("fromUnit::" + fromUnit);
+		toUnit = toEnumUnit.name();
+		System.out.println("toUnit::" + fromUnit);
+
+		if (fromUnit.equalsIgnoreCase(toUnit) || StringUtils.isEmpty(fromUnit) || StringUtils.isEmpty(toUnit)) {
+			b = false;
+
+			throw new BothInputRequestParamEqualException("both input shd not be same");
+
+		} else {
+			b = true;
+			System.out.println("inputs are different ");
+		}
+
+		return b;
+	}
 }
